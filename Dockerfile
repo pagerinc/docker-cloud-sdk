@@ -1,4 +1,4 @@
-FROM google/cloud-sdk:258.0.0-alpine@sha256:9c1c4feadb18101b19074c2208c470d08e9e465e364c5445da81a9598f150446
+FROM google/cloud-sdk:259.0.0-alpine@sha256:15dfcf430bfaf2810229a730e9c4218ce10fdb8a49037a593b973b9d8df4da85
 
 # Install Docker and GCR Credentials helper
 ENV DOCKER_VERSION='18.09.3' \
