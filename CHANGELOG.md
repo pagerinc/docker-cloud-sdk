@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.7.0] - 2019-09-18
+### Changed
+- GCloud 263.x base.
+
+### Removed
+- Tillerless Helm plugin.
+
 ## [1.6.0] - 2019-09-18
 ### Added
 - Tillerless Helm plugin.
@@ -51,7 +58,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - yamllint support.
 
-[Unreleased]: https://github.com/pagerinc/docker-cloud-sdk/compare/1.6.0...HEAD
+[Unreleased]: https://github.com/pagerinc/docker-cloud-sdk/compare/1.7.0...HEAD
+[1.7.0]: https://github.com/pagerinc/docker-cloud-sdk/compare/1.6.0...1.7.0
 [1.6.0]: https://github.com/pagerinc/docker-cloud-sdk/compare/1.5.0...1.6.0
 [1.5.0]: https://github.com/pagerinc/docker-cloud-sdk/compare/1.4.0...1.5.0
 [1.4.0]: https://github.com/pagerinc/docker-cloud-sdk/compare/1.2.4...1.4.0
