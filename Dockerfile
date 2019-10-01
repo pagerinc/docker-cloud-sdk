@@ -37,5 +37,5 @@ RUN apk --no-cache add \
 	&& rm -rf hub-linux-amd64-${HUB_VERSION}
 
 # Install Docker and shellcheck
-COPY --from=docker:18.09.9@sha256:7215e8e09ea282e517aa350fc5380c1773c117b1867316fb59076d901e252d15 /usr/local/bin/docker /usr/local/bin/docker
+COPY --from=docker:19.03.2@sha256:1932552a0fc1717b0ac7de53ae9e14f910a0f80f956b88c19f00b41d9c22b0fd /usr/local/bin/docker /usr/local/bin/docker
 COPY --from=koalaman/shellcheck-alpine:v0.7.0@sha256:169a51b086af0ab181e32801c15deb78944bb433d4f2c0a21cc30d4e60547065 /bin/shellcheck /bin/shellcheck
