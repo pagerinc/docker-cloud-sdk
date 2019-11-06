@@ -3,7 +3,8 @@ FROM google/cloud-sdk:270.0.0-alpine@sha256:4f516d4a17fa4385dd9814f7afada1f53a24
 ENV HELM_GCS_VERSION='v0.2.0' \
 	HELM_HOME='/root/.helm' \
 	HELM_VERSION='2.14.3' \
-	HUB_VERSION=2.12.3 \
+	HUB_VERSION='2.12.3' \
+	KUBEVAL_VERSION='0.14.0' \
 	SOPS_VERSION='3.3.1' \
 	YAMLLINT_VERSION='1.15.0'
 
@@ -30,11 +31,15 @@ RUN apk --no-cache add \
 		--version "${HELM_GCS_VERSION}" \
 	&& helm plugin install https://github.com/pagerinc/helm-diff \
 		--version 'master' \
+	&& echo 'installing kubeval' \
+	&& curl -fsSLO "https://github.com/instrumenta/kubeval/releases/download/${KUBEVAL_VERSION}/kubeval-linux-amd64.tar.gz" \
+	&& tar -xvzf kubeval-linux-amd64.tar.gz -C /usr/local/bin \
+	&& rm kubeval-linux-amd64.tar.gz \
 	&& echo 'installing hub' \
-	&& curl -L "https://github.com/github/hub/releases/download/v${HUB_VERSION}/hub-linux-amd64-${HUB_VERSION}.tgz" | tar xvz \
-	&& mv hub-linux-amd64-${HUB_VERSION}/bin/hub /usr/local/bin/hub \
+	&& curl -sL "https://github.com/github/hub/releases/download/v${HUB_VERSION}/hub-linux-amd64-${HUB_VERSION}.tgz" | tar xvz \
+	&& mv "hub-linux-amd64-${HUB_VERSION}/bin/hub" /usr/local/bin/hub \
 	&& chmod +x /usr/local/bin/hub \
-	&& rm -rf hub-linux-amd64-${HUB_VERSION}
+	&& rm -rf "hub-linux-amd64-${HUB_VERSION}"
 
 # Install Docker and shellcheck
 COPY --from=docker:18.09.9@sha256:7215e8e09ea282e517aa350fc5380c1773c117b1867316fb59076d901e252d15 /usr/local/bin/docker /usr/local/bin/docker

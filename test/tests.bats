@@ -51,3 +51,11 @@
 @test "It should use shellcheck 0.7.x" {
   shellcheck --version | grep 0.7
 }
+
+@test "It should install kubeval in PATH" {
+  command -v kubeval
+}
+
+@test "It should use kubeval 0.14.x" {
+  kubeval --version | grep 0.14
+}
