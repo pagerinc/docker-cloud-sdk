@@ -1,4 +1,4 @@
-FROM google/cloud-sdk:270.0.0-alpine@sha256:4f516d4a17fa4385dd9814f7afada1f53a24ec54295dafdca207c6644b75cdd7
+FROM google/cloud-sdk:271.0.0-alpine@sha256:7e31028a43042d5f208475add4a4ef75032a8826da650bed7fef7275b25e74de
 
 ENV HELM_GCS_VERSION='v0.2.0' \
 	HELM_HOME='/root/.helm' \
