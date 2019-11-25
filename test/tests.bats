@@ -20,8 +20,8 @@
   command -v helm
 }
 
-@test "It should use helm 2.14.x" {
-  helm version | grep 2.14
+@test "It should use helm 2.16.x" {
+  helm version | grep 2.16
 }
 
 @test "It should install helm diff plugin" {
@@ -32,16 +32,8 @@
   command -v gcloud
 }
 
-@test "It should use gcloud 270.0.x" {
-  gcloud --version | grep 270.0
-}
-
-@test "It should install hub in PATH" {
-  command -v hub
-}
-
-@test "It should use hub 2.12.x" {
-  hub --version | grep 2.12
+@test "It should use gcloud 272.0.x" {
+  gcloud --version | grep 272.0
 }
 
 @test "It should install shellcheck in PATH" {

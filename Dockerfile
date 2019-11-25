@@ -2,8 +2,7 @@ FROM google/cloud-sdk:272.0.0-alpine@sha256:e08306091bd29d71720e11afb5b932955f53
 
 ENV HELM_GCS_VERSION='v0.2.0' \
 	HELM_HOME='/root/.helm' \
-	HELM_VERSION='2.14.3' \
-	HUB_VERSION='2.12.3' \
+	HELM_VERSION='2.16.1' \
 	KUBEVAL_VERSION='0.14.0' \
 	SOPS_VERSION='3.3.1' \
 	YAMLLINT_VERSION='1.15.0'
@@ -34,12 +33,7 @@ RUN apk --no-cache add \
 	&& echo 'installing kubeval' \
 	&& curl -fsSLO "https://github.com/instrumenta/kubeval/releases/download/${KUBEVAL_VERSION}/kubeval-linux-amd64.tar.gz" \
 	&& tar -xvzf kubeval-linux-amd64.tar.gz -C /usr/local/bin \
-	&& rm kubeval-linux-amd64.tar.gz \
-	&& echo 'installing hub' \
-	&& curl -sL "https://github.com/github/hub/releases/download/v${HUB_VERSION}/hub-linux-amd64-${HUB_VERSION}.tgz" | tar xvz \
-	&& mv "hub-linux-amd64-${HUB_VERSION}/bin/hub" /usr/local/bin/hub \
-	&& chmod +x /usr/local/bin/hub \
-	&& rm -rf "hub-linux-amd64-${HUB_VERSION}"
+	&& rm kubeval-linux-amd64.tar.gz
 
 # Install Docker and shellcheck
 COPY --from=docker:18.09.9@sha256:7215e8e09ea282e517aa350fc5380c1773c117b1867316fb59076d901e252d15 /usr/local/bin/docker /usr/local/bin/docker
