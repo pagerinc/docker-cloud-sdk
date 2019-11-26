@@ -51,3 +51,7 @@
 @test "It should use kubeval 0.14.x" {
   kubeval --version | grep 0.14
 }
+
+@test "It should install docker-compose in PATH" {
+  command -v docker-compose
+}

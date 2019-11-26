@@ -1,6 +1,7 @@
 FROM google/cloud-sdk:272.0.0-alpine@sha256:e08306091bd29d71720e11afb5b932955f5394357f94dfe0836cc0fdda5f3a5a
 
-ENV HELM_GCS_VERSION='v0.2.0' \
+ENV DOCKER_COMPOSE_VERSION='1.24.1' \
+	HELM_GCS_VERSION='v0.2.0' \
 	HELM_HOME='/root/.helm' \
 	HELM_VERSION='2.16.1' \
 	KUBEVAL_VERSION='0.14.0' \
@@ -33,7 +34,10 @@ RUN apk --no-cache add \
 	&& echo 'installing kubeval' \
 	&& curl -fsSLO "https://github.com/instrumenta/kubeval/releases/download/${KUBEVAL_VERSION}/kubeval-linux-amd64.tar.gz" \
 	&& tar -xvzf kubeval-linux-amd64.tar.gz -C /usr/local/bin \
-	&& rm kubeval-linux-amd64.tar.gz
+	&& rm kubeval-linux-amd64.tar.gz \
+	&& echo 'installing docker-compose' \
+	&& curl -fsSL "https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/run.sh" -o /usr/local/bin/docker-compose \
+	&& chmod +x /usr/local/bin/docker-compose
 
 # Install Docker and shellcheck
 COPY --from=docker:18.09.9@sha256:7215e8e09ea282e517aa350fc5380c1773c117b1867316fb59076d901e252d15 /usr/local/bin/docker /usr/local/bin/docker
