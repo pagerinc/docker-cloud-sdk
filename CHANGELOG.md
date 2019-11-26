@@ -6,6 +6,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.5.0] - 2019-11-26
+### Added
+- docker-compose helper
+
+## [2.4.0] - 2019-11-24
+### Changed
+- Helm v2.16.1
+- GCloud 272.x base.
+
 ## [2.3.0] - 2019-11-06
 ### Added
 - kubeval binary.
