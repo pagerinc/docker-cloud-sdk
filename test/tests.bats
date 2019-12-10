@@ -32,8 +32,8 @@
   command -v gcloud
 }
 
-@test "It should use gcloud 272.0.x" {
-  gcloud --version | grep 272.0
+@test "It should use gcloud 273.0.x" {
+  gcloud --version | grep 273.0
 }
 
 @test "It should install shellcheck in PATH" {
