@@ -1,4 +1,4 @@
-FROM google/cloud-sdk:272.0.0-alpine@sha256:e08306091bd29d71720e11afb5b932955f5394357f94dfe0836cc0fdda5f3a5a
+FROM google/cloud-sdk:273.0.0-alpine@sha256:523cf387dea24107473759d6d6a2f7157eb3b698dfbaa61d428bfe21b6ae82b3
 
 ENV DOCKER_COMPOSE_VERSION='1.24.1' \
 	HELM_GCS_VERSION='v0.2.0' \
