@@ -40,5 +40,5 @@ RUN apk --no-cache add \
 	&& chmod +x /usr/local/bin/docker-compose
 
 # Install Docker and shellcheck
-COPY --from=docker:18.09.9@sha256:7215e8e09ea282e517aa350fc5380c1773c117b1867316fb59076d901e252d15 /usr/local/bin/docker /usr/local/bin/docker
+COPY --from=docker:19.03.5@sha256:83a5911718a8e472a56f615f2939358508dfc6f6f0eaa460ef58460d7c18d723 /usr/local/bin/docker /usr/local/bin/docker
 COPY --from=koalaman/shellcheck-alpine:v0.7.0@sha256:169a51b086af0ab181e32801c15deb78944bb433d4f2c0a21cc30d4e60547065 /bin/shellcheck /bin/shellcheck
