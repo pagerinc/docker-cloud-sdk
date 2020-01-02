@@ -6,6 +6,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [3.0.0] - 2020-01-02
+### Added
+- Hadolint binary
+
+### Changed
+- Gcloud 274 base
+- Use statically linked binaries from repos instead of Docker images.
+
+### Removed
+- docker, docker-compose helper
+
 ## [2.5.0] - 2019-11-26
 ### Added
 - docker-compose helper
