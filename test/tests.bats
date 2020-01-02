@@ -4,8 +4,8 @@
   command -v docker
 }
 
-@test "It should use docker 18.09.x" {
-  docker --version | grep 18.09
+@test "It should use docker 19.03.x" {
+  docker --version | grep 19.03
 }
 
 @test "It should install sops in PATH" {
@@ -32,8 +32,8 @@
   command -v gcloud
 }
 
-@test "It should use gcloud 273.0.x" {
-  gcloud --version | grep 273.0
+@test "It should use gcloud 274.0.x" {
+  gcloud --version | grep 274.0
 }
 
 @test "It should install shellcheck in PATH" {
