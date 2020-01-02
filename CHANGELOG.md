@@ -89,7 +89,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - yamllint support.
 
-[Unreleased]: https://github.com/pagerinc/docker-cloud-sdk/compare/2.3.0...HEAD
+[Unreleased]: https://github.com/pagerinc/docker-cloud-sdk/compare/3.0.0...HEAD
+[3.0.0]: https://github.com/pagerinc/docker-cloud-sdk/compare/2.5.0...3.0.0
+[2.5.0]: https://github.com/pagerinc/docker-cloud-sdk/compare/2.4.0...2.5.0
+[2.4.0]: https://github.com/pagerinc/docker-cloud-sdk/compare/2.3.0...2.4.0
 [2.3.0]: https://github.com/pagerinc/docker-cloud-sdk/compare/2.2.0...2.3.0
 [2.2.0]: https://github.com/pagerinc/docker-cloud-sdk/compare/1.7.0...2.2.0
 [1.7.0]: https://github.com/pagerinc/docker-cloud-sdk/compare/1.6.0...1.7.0
