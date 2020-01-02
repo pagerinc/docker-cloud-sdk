@@ -55,3 +55,11 @@
 @test "It should install docker-compose in PATH" {
   command -v docker-compose
 }
+
+@test "It should install hadolint in PATH" {
+  command -v hadolint
+}
+
+@test "It should use hadolint 1.17.x" {
+  hadolint --version | grep 1.17
+}
