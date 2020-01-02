@@ -1,16 +1,21 @@
 FROM google/cloud-sdk:274.0.1-alpine@sha256:cc824eeb6355cdc59cd3dad705fdd6899d0a137154a68025df5598739f8c422f
 
-ENV DOCKER_COMPOSE_VERSION='1.24.1' \
+ENV HADOLINT_VERSION='v1.17.3' \
 	HELM_GCS_VERSION='v0.2.0' \
 	HELM_HOME='/root/.helm' \
 	HELM_VERSION='2.16.1' \
 	KUBEVAL_VERSION='0.14.0' \
+	SHELLCHECK_VERSION='0.7.0' \
 	SOPS_VERSION='3.3.1' \
 	YAMLLINT_VERSION='1.15.0'
 
-RUN apk --no-cache add \
-		make \
-		jq \
+RUN apk add --no-cache --virtual .build-deps \
+		tar=1.32-r0 \
+		gzip=1.10-r0 \
+		xz=5.2.4-r0 \
+	&& apk add --no-cache \
+		make=4.2.1-r2 \
+		jq=1.6-r0 \
 	&& gcloud components install \
 		kubectl \
 	&& echo 'installing yamllint' \
@@ -35,11 +40,13 @@ RUN apk --no-cache add \
 	&& curl -fsSLO "https://github.com/instrumenta/kubeval/releases/download/${KUBEVAL_VERSION}/kubeval-linux-amd64.tar.gz" \
 	&& tar -xvzf kubeval-linux-amd64.tar.gz -C /usr/local/bin \
 	&& rm kubeval-linux-amd64.tar.gz \
-	&& echo 'installing docker-compose' \
-	&& curl -fsSL "https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/run.sh" -o /usr/local/bin/docker-compose \
-	&& chmod +x /usr/local/bin/docker-compose
-
-# Install Docker hadolint and shellcheck
-COPY --from=docker:19.03.5@sha256:83a5911718a8e472a56f615f2939358508dfc6f6f0eaa460ef58460d7c18d723 /usr/local/bin/docker /usr/local/bin/docker
-COPY --from=koalaman/shellcheck-alpine:v0.7.0@sha256:169a51b086af0ab181e32801c15deb78944bb433d4f2c0a21cc30d4e60547065 /bin/shellcheck /bin/shellcheck
-COPY --from=hadolint/hadolint:v1.17.3-debian@sha256:9bf3695c7116d45888c5bcab779b7b1c45a3ce3f5518e1e7f4b6e19b85a1c4a1 /bin/hadolint /bin/hadolint
+	&& echo 'installing hadolint' \
+	&& curl -sL "https://github.com/hadolint/hadolint/releases/download/${HADOLINT_VERSION}/hadolint-Linux-x86_64" \
+		-o /usr/local/bin/hadolint \
+	&& chmod +x /usr/local/bin/hadolint \
+	&& echo 'installing shellcheck' \
+	&& curl -fsSLO "https://shellcheck.storage.googleapis.com/shellcheck-v${SHELLCHECK_VERSION}.linux.x86_64.tar.xz" \
+	&& tar --strip-components=1 -xvJf shellcheck-v${SHELLCHECK_VERSION}.linux.x86_64.tar.xz -C /usr/local/bin \
+	&& rm shellcheck-v${SHELLCHECK_VERSION}.linux.x86_64.tar.xz \
+	&& chmod +x /usr/local/bin/shellcheck \
+	&& apk del .build-deps

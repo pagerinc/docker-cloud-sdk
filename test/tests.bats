@@ -1,13 +1,5 @@
 #!/usr/bin/env bats
 
-@test "It should install docker in PATH" {
-  command -v docker
-}
-
-@test "It should use docker 19.03.x" {
-  docker --version | grep 19.03
-}
-
 @test "It should install sops in PATH" {
   command -v sops
 }
@@ -50,10 +42,6 @@
 
 @test "It should use kubeval 0.14.x" {
   kubeval --version | grep 0.14
-}
-
-@test "It should install docker-compose in PATH" {
-  command -v docker-compose
 }
 
 @test "It should install hadolint in PATH" {
