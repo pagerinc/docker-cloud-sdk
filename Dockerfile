@@ -39,6 +39,7 @@ RUN apk --no-cache add \
 	&& curl -fsSL "https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/run.sh" -o /usr/local/bin/docker-compose \
 	&& chmod +x /usr/local/bin/docker-compose
 
-# Install Docker and shellcheck
+# Install Docker hadolint and shellcheck
 COPY --from=docker:19.03.5@sha256:83a5911718a8e472a56f615f2939358508dfc6f6f0eaa460ef58460d7c18d723 /usr/local/bin/docker /usr/local/bin/docker
 COPY --from=koalaman/shellcheck-alpine:v0.7.0@sha256:169a51b086af0ab181e32801c15deb78944bb433d4f2c0a21cc30d4e60547065 /bin/shellcheck /bin/shellcheck
+COPY --from=hadolint/hadolint:v1.17.3-debian@sha256:9bf3695c7116d45888c5bcab779b7b1c45a3ce3f5518e1e7f4b6e19b85a1c4a1 /bin/hadolint /bin/hadolint
