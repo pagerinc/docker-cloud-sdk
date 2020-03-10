@@ -1,4 +1,4 @@
-FROM google/cloud-sdk:274.0.1-alpine@sha256:cc824eeb6355cdc59cd3dad705fdd6899d0a137154a68025df5598739f8c422f
+FROM google/cloud-sdk:284.0.0-alpine@sha256:520ded04bedbfe7ab39d794f276ff581c4ee0c84faaca6eb5d9ca9e33026a43a
 
 ENV HADOLINT_VERSION='v1.17.3' \
 	HELM_GCS_VERSION='v0.2.0' \
